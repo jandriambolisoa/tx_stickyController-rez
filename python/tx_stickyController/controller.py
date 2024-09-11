@@ -8,6 +8,7 @@ from . import __author__, __version__
 
 
 MAIN_PATH = os.path.dirname(__file__)
+MAIN_PATH = MAIN_PATH.replace(os.sep, '/') # Convert \\ to / to avoid unicodeescape error
 
 
 def get_selection():

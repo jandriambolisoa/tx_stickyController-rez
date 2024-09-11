@@ -8,6 +8,7 @@ import maya.mel as mel
 def install():
     # Search paths
     main_path = os.path.dirname(__file__)
+    main_path = main_path.replace(os.sep, '/') # Convert \\ to / to avoid unicodeescape error
     main_shelf = mel.eval('$tempMelVar=$gShelfTopLevel')
     current_shelf = cmds.tabLayout(main_shelf, query=1, selectTab=1)
     icon_path = '{0}/icons/icon.png'.format(main_path)

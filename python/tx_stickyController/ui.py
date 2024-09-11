@@ -5,8 +5,8 @@ from functools import partial
 import maya.cmds as cmds
 import maya.mel as mel
 from . import __version__, __author__, __web__
-import controller
-reload(controller)
+import tx_stickyController.controller as controller
+#reload(controller)
 
 
 class StickyControllerUI(object):
@@ -15,6 +15,7 @@ class StickyControllerUI(object):
         self.controller = controller.StickyController()
 
         self.main_path = os.path.dirname(__file__)
+        self.main_path = self.main_path.replace(os.sep, '/') # Convert \\ to / to avoid unicodeescape error
         self.path_icon_refresh = '{0}/icons/refresh.png'.format(self.main_path)
         self.path_icon_load = '{0}/icons/load.png'.format(self.main_path)
         self.path_icon_save = '{0}/icons/save.png'.format(self.main_path)
@@ -970,6 +971,7 @@ class StickyLoaderUI(object):
 class StickyLoaderWidget(object):
     def __init__(self, parent, name, reference_object, color, first_vertex, orient_mode, shape, weight_members, size):
         self.main_path = os.path.dirname(__file__)
+        self.main_path = self.main_path.replace(os.sep, '/') # Convert \\ to / to avoid unicodeescape error
         self.path_icon_select = '{0}/icons/select_reference.png'.format(self.main_path)
         self.path_icon_change = '{0}/icons/refresh.png'.format(self.main_path)
         self.path_icon_options = '{0}/icons/options.png'.format(self.main_path)
